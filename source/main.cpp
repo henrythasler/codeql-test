@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
+    vector<string> msg {"This", "will", "crash"};
 
     for (const string& word : msg)
     {
@@ -14,5 +14,11 @@ int main()
     }
     cout << endl;
 
-    cout << msg[6] << endl;
+    try {
+        cout << msg[3] << endl;     // <-- this will segfault
+        // cout << msg.at(3) << endl;     // <-- this will be catched
+    }
+    catch(...){
+        cout << "Lucky you!" << endl;
+    }
 }
