@@ -1,4 +1,4 @@
 name: "extended queries"
 
 queries:
-    - uses: out-of-bounds.qls
+    - uses: oob.qls
