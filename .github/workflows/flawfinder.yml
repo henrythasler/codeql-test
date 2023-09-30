@@ -35,7 +35,7 @@ jobs:
       - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v2
         with:
-          query: out-of-bounds.ql
+          query: './.github/workflows/out-of-bounds.ql'
 
       - name: Upload analysis results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
