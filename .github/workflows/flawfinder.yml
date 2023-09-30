@@ -25,17 +25,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          config-file: .github/workflows/codeql-config.yml
 
       - name: flawfinder_scan
         uses: david-a-wheeler/flawfinder@8e4a779ad59dbfaee5da586aa9210853b701959c
         with:
           arguments: '--sarif ./'
           output: 'flawfinder_results.sarif'
-
-      - name: Run CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-        with:
-          query: './.github/workflows/out-of-bounds.ql'
 
       - name: Upload analysis results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
