@@ -1,4 +1,0 @@
-name: "extended queries"
-
-queries:
-    - uses: ./.github/queries/out-of-bounds.qls
