@@ -1,0 +1,4 @@
+name: "extended queries"
+
+queries:
+    - uses: ./.github/codeql-queries/out-of-bounds.qls
