@@ -177,5 +177,5 @@ where
   // That's pointer arithmetic, not a deref, so it's usually a false positive.
   not exists(AddressOfExpr addrExpr | addrExpr.getOperand() = call) and
   // Ignore results in the xmpsdk directory.
-  // not call.getLocation().getFile().getRelativePath().matches("xmpsdk/%")
+  not call.getLocation().getFile().getRelativePath().matches("xmpsdk/%")
 select call, "Unsafe use of operator[]. Use the at() method instead."
