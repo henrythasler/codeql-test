@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    vector<string> msg{"This", "will", "crash"};
+    vector<string> msg{"This", "might", "crash"};
 
     // inherently safe
     for (const string &word : msg)
@@ -15,21 +15,24 @@ int main()
     }
     cout << endl;
 
+    // inside bounds check (safe)
     if (msg.size() > 3)
     {
-        cout << msg[3] << endl; // inside bounds check
+        cout << msg[3] << endl;
     }
 
-    for (int num = 0; num < msg.size(); num++)
+    // inside bounds check (safe)
+    for (int i = 0; i < msg.size(); i++)
     {
-        cout << msg[num] << ", "; // inside bounds check
+        cout << msg[i] << ", ";
     }
     cout << endl;
 
+    // UNSAFE
     try
     {
         cout << msg[3] << endl; // <-- this will segfault
-        // cout << msg.at(3) << endl;     // <-- this will be catched
+        // cout << msg.at(3) << endl;     // <-- this will be caught
     }
     catch (...)
     {
