@@ -6,32 +6,39 @@ using namespace std;
 
 int main()
 {
-    vector<string> msg{"This", "might", "crash"};
+    vector<string> sentence{"This", "might", "crash"};
+    string message{"hello"};
+
+    // inside bounds check (safe)
+    for (size_t i = 0; i < message.length(); ++i) {
+        message[i] = message[i] - 32;
+    }    
+    cout << message << endl;
 
     // inherently safe
-    for (const string &word : msg)
+    for (const string &word : sentence)
     {
         cout << word << " ";
     }
     cout << endl;
 
     // inside bounds check (safe)
-    if (msg.size() > 3)
+    if (sentence.size() > 3)
     {
-        cout << msg[3] << endl;
+        cout << sentence[3] << endl;
     }
 
     // inside bounds check (safe)
-    for (int i = 0; i < msg.size(); i++)
+    for (int i = 0; i < sentence.size(); i++)
     {
-        cout << msg[i] << ", ";
+        cout << sentence[i] << ", ";
     }
     cout << endl;
 
     // UNSAFE
     try
     {
-        cout << msg[3] << endl; // <-- this will segfault
+        cout << sentence[3] << endl; // <-- this will segfault
         // cout << msg.at(3) << endl;     // <-- this will be caught
     }
     catch (...)
