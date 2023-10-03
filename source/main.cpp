@@ -6,19 +6,33 @@ using namespace std;
 
 int main()
 {
-    vector<string> msg {"This", "will", "crash"};
+    vector<string> msg{"This", "will", "crash"};
 
-    for (const string& word : msg)
+    // inherently safe
+    for (const string &word : msg)
     {
         cout << word << " ";
     }
     cout << endl;
 
-    try {
-        cout << msg[3] << endl;     // <-- this will segfault
+    if (msg.size() > 3)
+    {
+        cout << msg[3] << endl; // inside bounds check
+    }
+
+    for (int num = 0; num < msg.size(); num++)
+    {
+        cout << msg[num] << ", "; // inside bounds check
+    }
+    cout << endl;
+
+    try
+    {
+        cout << msg[3] << endl; // <-- this will segfault
         // cout << msg.at(3) << endl;     // <-- this will be catched
     }
-    catch(...){
+    catch (...)
+    {
         cout << "Lucky you!" << endl;
     }
 }
