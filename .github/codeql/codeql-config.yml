@@ -2,4 +2,4 @@ name: "extended queries"
 
 queries:
     - uses: ./.github/codeql-queries/default.qls
-    - uses: ./.github/codeql-queries/custom/oob.qls
+    - uses: ./.github/codeql-queries/custom
