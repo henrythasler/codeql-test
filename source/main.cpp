@@ -8,6 +8,7 @@ int main()
 {
     vector<string> sentence{"This", "might", "crash"};
     string message{"hello"};
+    int num;
 
     // inside bounds check (safe)
     for (size_t i = 0; i < message.length(); ++i) {
@@ -34,6 +35,11 @@ int main()
         cout << sentence[i] << ", ";
     }
     cout << endl;
+
+    // Shifting a negative number is undefined behavior
+    num = -1;
+    num = num << 2;
+    cout << num << endl;
 
     // UNSAFE
     try
